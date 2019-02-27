@@ -32,10 +32,19 @@ set shortmess=atI
 set nowrap
 set backspace=indent,eol,start
 
-"Theme settings
-set background=dark
 
-
+"+++++++++++++++++++++++++++
+"       高级设置
+"+++++++++++++++++++++++++++
+"主题
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+"colorscheme tomasr/molokai
+"真彩色
+"set tgc
 set showmatch
 
 let mapleader=';'
@@ -61,7 +70,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+"solarized主题， 只支持gvim, macvim
+"Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/syntastic'
 "Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
@@ -99,6 +110,15 @@ call plug#end()
 "+++++++++++++++++++++++++++++++++++++++
 "            插件设置
 "+++++++++++++++++++++++++++++++++++++++
+
+"-----------
+"vim-colors-solarized
+"-----------
+
+"设置颜色为256，默认为16
+let g:solarized_termcolors=256
+"设置背景色透明，使用终端的背景色
+let g:solarized_termtrans=0
 
 "-----------
 "delimitMate
