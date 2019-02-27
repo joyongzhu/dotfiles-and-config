@@ -70,6 +70,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'easymotion/vim-easymotion'
+"自动补全符号
+Plug 'Raimondi/delimitMate'
 Plug 'tomasr/molokai'
 "solarized主题， 只支持gvim, macvim
 "Plug 'altercation/vim-colors-solarized'
@@ -79,18 +82,13 @@ Plug 'tomasr/molokai'
 "Plug 'majutsushi/tagbar'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
-"自动补全符号
-Plug 'Raimondi/delimitMate'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'elzr/vim-json'
 "Plug 'vim-scripts/a.vim'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'kien/ctrlp.vim'
 "Plug 'mattn/emmet-vim'
-Plug 'easymotion/vim-easymotion'
 "Plug 'godlygeek/tabular'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-surround'
 "Plug 'rking/ag.vim'
 "Plug 'tpope/vim-repeat'
@@ -165,15 +163,4 @@ let g:ycm_warning_symbol='>*'
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
  let g:ycm_use_ultisnips_completer=0
 
-
-
-
-"inoremap ' ''<ESC>i
-"inoremap <ESC>i
-"inoremap ( ()<ESC>i
-"inoremap ) <c-r>=ClosePair(')')<CR>
-"inoremap [ []<ESC>i
-"inoremap ) <c-r>=ClosePair(']')<CR>
-"inoremap { {<CR>}<ESC>i
-"inoremap ) <c-r>=ClosePair('}')<CR>
 
