@@ -31,6 +31,7 @@ set cursorline
 set shortmess=atI
 set nowrap
 set backspace=indent,eol,start
+set ruler
 
 
 "+++++++++++++++++++++++++++
@@ -42,7 +43,13 @@ if has('gui_running')
 else
     set background=dark
 endif
-"colorscheme tomasr/molokai
+colorscheme molokai
+
+"highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+highlight YcmErrorLine guibg=#EEE8D5
+highlight SyntasticErrorLine guibg=#EEE8D5
+
 "真彩色
 "set tgc
 set showmatch
@@ -51,7 +58,6 @@ let mapleader=';'
 
 set hlsearch
 
-set ruler
 
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
@@ -59,7 +65,6 @@ let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
-
 
 
 "+++++++++++++++++++++++++++++++++++++
@@ -74,6 +79,7 @@ Plug 'easymotion/vim-easymotion'
 "自动补全符号
 Plug 'Raimondi/delimitMate'
 Plug 'tomasr/molokai'
+Plug 'lifepillar/vim-solarized8'
 "solarized主题， 只支持gvim, macvim
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/syntastic'
@@ -98,10 +104,6 @@ Plug 'tomasr/molokai'
 "Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
-
-
-
-
 
 
 
@@ -148,13 +150,18 @@ let g:ycm_enable_diagnostic_highlighting = 0
 
 
 "-----------
+"molokai
+"-----------
+let g:molokai_original = 1
+
+"-----------
 "vim-colors-solarized
 "-----------
 
 "设置颜色为256，默认为16
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "设置背景色透明，使用终端的背景色
-let g:solarized_termtrans=0
+"let g:solarized_termtrans=0
 
 "-----------
 "delimitMate
@@ -166,6 +173,4 @@ let g:delimitMate_expand_cr = 1
 " vim markdown
 "-------------
 let g:vim_markdown_folding_disabled = 1
-
-
 
