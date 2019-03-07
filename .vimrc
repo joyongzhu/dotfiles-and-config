@@ -33,25 +33,11 @@ set nowrap
 set backspace=indent,eol,start
 set ruler
 
-
 "+++++++++++++++++++++++++++
 "       高级设置
 "+++++++++++++++++++++++++++
-"主题
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-colorscheme molokai
 
-"highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-highlight YcmErrorLine guibg=#EEE8D5
-highlight SyntasticErrorLine guibg=#EEE8D5
 
-"真彩色
-"set tgc
 set showmatch
 
 let mapleader=';'
@@ -78,10 +64,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
 "自动补全符号
 Plug 'Raimondi/delimitMate'
+Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
 Plug 'lifepillar/vim-solarized8'
 "solarized主题， 只支持gvim, macvim
-"Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/syntastic'
 "Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
@@ -105,6 +92,25 @@ Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
+"+++++++++++++++++++++++++++++++++++++++
+"    VIM主题显示设置（放在插件管理后）
+"+++++++++++++++++++++++++++++++++++++++
+"主题
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+"真彩色
+set tgc
+"let ayucolor="dark"
+colorscheme solarized8
+
+highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+highlight YcmErrorLine guibg=#EEE8D5
+highlight SyntasticErrorLine guibg=#EEE8D5
 
 
 "+++++++++++++++++++++++++++++++++++++++
@@ -173,4 +179,5 @@ let g:delimitMate_expand_cr = 1
 " vim markdown
 "-------------
 let g:vim_markdown_folding_disabled = 1
+
 
