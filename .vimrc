@@ -33,24 +33,38 @@ set nowrap
 set backspace=indent,eol,start
 set ruler
 
-"+++++++++++++++++++++++++++
-"       高级设置
-"+++++++++++++++++++++++++++
-
-
 set showmatch
 
-let mapleader=';'
+let mapleader=','
 
 set hlsearch
 
+"+++++++++++++++++++++++++++++++++++++
+"           按键映射
+"+++++++++++++++++++++++++++++++++++++
 
-let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
+"编辑模式jk代替ESC
+imap jk <ESC>
+
+"切换窗口
+nmap <s-h> <c-w>h
+nmap <s-j> <c-w>j
+nmap <s-k> <c-w>k
+nmap <s-l> <c-w>l
+
+"改变窗口大小
+nmap <leader>- <C-W>-
+nmap <leader>+ <C-W>+
+nmap <leader>> <C-W>>
+nmap <leader>< <C-W><
+nmap <leader>= <C-W>=
+
+"let NERDTreeShowHidden=0
+"let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+"let g:NERDTreeWinSize=35
+"map <leader>nn :NERDTreeToggle<cr>
+"map <leader>nb :NERDTreeFromBookmark<Space>
+"map <leader>nf :NERDTreeFind<cr>
 
 
 "+++++++++++++++++++++++++++++++++++++
@@ -66,12 +80,14 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Raimondi/delimitMate'
 Plug 'ayu-theme/ayu-vim'
 Plug 'tomasr/molokai'
+"目录树
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+"替代solarized
 Plug 'lifepillar/vim-solarized8'
 "solarized主题， 只支持gvim, macvim
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/syntastic'
-"Plug 'scrooloose/nerdtree'
-"Plug 'scrooloose/nerdcommenter'
 "Plug 'majutsushi/tagbar'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
@@ -109,13 +125,45 @@ colorscheme solarized8
 
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-highlight YcmErrorLine guibg=#EEE8D5
-highlight SyntasticErrorLine guibg=#EEE8D5
+"highlight YcmErrorLine guibg=#EEE8D5
+"highlight SyntasticErrorLine guibg=#E4E4E4
 
 
 "+++++++++++++++++++++++++++++++++++++++
 "            插件设置
 "+++++++++++++++++++++++++++++++++++++++
+
+"----------------
+"   NERDTree
+"----------------
+"启动vim自动打开NERDTree
+autocmd vimenter * NERDTree
+"vim启动打开目录，自动打开NERDTree
+autocmd StdinReadPre * let s:std_in = 1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"剩下唯一窗口为NERDTree，关闭vim
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+"映射
 
 "-----------
 "YouCompleteMe
@@ -148,7 +196,7 @@ let g:ycm_collect_identifiers_from_comments_and_string = 1
 " 错误标识符
 let g:ycm_error_symbol='>>'
 " 警告标识符
-let g:ycm_warning_symbol='>*'
+let g:ycm_warning_symbol='--'
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 let g:ycm_use_ultisnips_completer=0
 "YCM自动检错的错误部分不高亮显示
@@ -161,23 +209,11 @@ let g:ycm_enable_diagnostic_highlighting = 0
 let g:molokai_original = 1
 
 "-----------
-"vim-colors-solarized
-"-----------
-
-"设置颜色为256，默认为16
-"let g:solarized_termcolors=256
-"设置背景色透明，使用终端的背景色
-"let g:solarized_termtrans=0
-
-"-----------
 "delimitMate
 "-----------
 let g:delimitMate_expand_cr = 1
-
 
 "-------------
 " vim markdown
 "-------------
 let g:vim_markdown_folding_disabled = 1
-
-
