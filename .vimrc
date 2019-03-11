@@ -143,7 +143,13 @@ autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 "剩下唯一窗口为NERDTree，关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" NERDTress File highlighting
+"窗口尺寸
+let g:NERDTreeWinSize=30
+"窗口显示行号
+let g:NERDTreeShowLineNumbers=1
+"不显示隐藏文件
+let g:NERDTreeShowHidden=0
+" 目录树不同文件高亮
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
