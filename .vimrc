@@ -144,7 +144,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "剩下唯一窗口为NERDTree，关闭vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "窗口尺寸
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=35
 "窗口显示行号
 let g:NERDTreeShowLineNumbers=1
 "不显示隐藏文件
