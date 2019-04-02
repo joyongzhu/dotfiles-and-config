@@ -14,6 +14,7 @@ set autoread
 set incsearch
 set mouse-=a
 set number
+set showmode
 "相对行号
 "set rnu
 set cmdheight=1
@@ -32,6 +33,8 @@ set shortmess=atI
 set nowrap
 set backspace=indent,eol,start
 set ruler
+"设置paste启动与关闭快捷键
+set pastetoggle=<f10>
 
 set showmatch
 
@@ -72,7 +75,7 @@ nmap <leader>= <C-W>=
 "+++++++++++++++++++++++++++++++++++++
 call plug#begin('~/.vim/plugged')
 "自动补全内容（关键字、函数等）
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
@@ -119,12 +122,11 @@ else
 endif
 
 "真彩色
-set tgc
-"let ayucolor="dark"
-colorscheme solarized8
+"set tgc
+"colorscheme molokai
 
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+"highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+"highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 "highlight YcmErrorLine guibg=#EEE8D5
 "highlight SyntasticErrorLine guibg=#E4E4E4
 
