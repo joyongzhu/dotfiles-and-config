@@ -149,6 +149,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeWinSize=35
 "窗口显示行号
 let g:NERDTreeShowLineNumbers=1
+"过滤文件名
+let NERDTreeIgnore = ['\.pyc$']
 "不显示隐藏文件
 let g:NERDTreeShowHidden=0
 " 目录树不同文件高亮
