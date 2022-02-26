@@ -76,16 +76,17 @@ nmap <leader>= <C-W>=
 call plug#begin('~/.vim/plugged')
 "自动补全内容（关键字、函数等）
 "Plug 'Valloric/YouCompleteMe'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'easymotion/vim-easymotion'
 "自动补全符号
-Plug 'Raimondi/delimitMate'
-Plug 'ayu-theme/ayu-vim'
-Plug 'tomasr/molokai'
+"Plug 'Raimondi/delimitMate'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'tomasr/molokai'
 "目录树
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+"Plug 'scrooloose/nerdcommenter'
 "替代solarized
 Plug 'lifepillar/vim-solarized8'
 "solarized主题， 只支持gvim, macvim
