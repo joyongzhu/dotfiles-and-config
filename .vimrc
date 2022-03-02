@@ -1,6 +1,9 @@
 "++++++++++++++++++++++++++++++++++++++++++
 "               基本设置
 "++++++++++++++++++++++++++++++++++++++++++
+" 设置 leader 按键!!!，修改为 ","
+let mapleader=','
+
 " 打开文件类型检测 "
 filetype on
 " 打开语法高亮显示 "
@@ -9,51 +12,63 @@ set nocompatible
 set encoding=utf-8
 set termencoding=utf-8
 set laststatus=2
-set autoindent
 set autoread
+" 搜索结果高亮
+set hlsearch
 set incsearch
-set mouse-=a
-set number
-set showmode
-"相对行号
-"set rnu
-set cmdheight=1
-set smartindent
+" 搜索内容根据有无大写智能判断大小写敏感
 set ignorecase
 set smartcase
-set shiftwidth=4
+set mouse-=a
+" 显示光标所在行号和列号
+set ruler
+" 显示行号
+set number
+set showcmd
+" 最后一行提供消息
+set showmode
+"相对行号
+"
+set cmdheight=1
+" Tab 为空格
 set expandtab
+" 插入时使用 shiftwidth
+set smarttab
+set autoindent smartindent shiftround
+set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set shiftround
 set ignorecase
 set title
+" 显示光标列
+set cursorcolumn
+" 显示光标行
 set cursorline
 set shortmess=atI
+" 超出窗口宽度不自动回绕
 set nowrap
 set backspace=indent,eol,start
-set ruler
 "设置paste启动与关闭快捷键
 set pastetoggle=<f10>
 
 set showmatch
 
-let mapleader=','
 
-set hlsearch
 
 "+++++++++++++++++++++++++++++++++++++
 "           按键映射
 "+++++++++++++++++++++++++++++++++++++
 
 "编辑模式jk代替ESC
-imap jk <ESC>
+"imap jk <ESC>
+inoremap jk <ESC>
 
 "切换窗口
-nmap <s-h> <c-w>h
-nmap <s-j> <c-w>j
-nmap <s-k> <c-w>k
-nmap <s-l> <c-w>l
+nmap <s-h> <C-W>h
+nmap <s-j> <C-W>j
+nmap <s-k> <C-W>k
+nmap <s-l> <C-W>l
 
 "改变窗口大小
 nmap <leader>- <C-W>-
@@ -62,14 +77,14 @@ nmap <leader>> <C-W>>
 nmap <leader>< <C-W><
 nmap <leader>= <C-W>=
 
-"let NERDTreeShowHidden=0
-"let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-"let g:NERDTreeWinSize=35
-"map <leader>nn :NERDTreeToggle<cr>
-"map <leader>nb :NERDTreeFromBookmark<Space>
-"map <leader>nf :NERDTreeFind<cr>
+map <leader>sa ggVG"
 
-
+" 光标移动设置
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+"
 "+++++++++++++++++++++++++++++++++++++
 "			插件管理
 "+++++++++++++++++++++++++++++++++++++
@@ -153,7 +168,14 @@ let g:NERDTreeShowLineNumbers=1
 "过滤文件名
 let NERDTreeIgnore = ['\.pyc$']
 "不显示隐藏文件
-let g:NERDTreeShowHidden=0
+"let g:NERDTreeShowHidden=0
+
+"let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+"let g:NERDTreeWinSize=35
+"map <leader>nn :NERDTreeToggle<cr>
+"map <leader>nb :NERDTreeFromBookmark<Space>
+"map <leader>nf :NERDTreeFind<cr>
+"
 " 目录树不同文件高亮
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
